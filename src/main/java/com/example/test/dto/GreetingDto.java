@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Data
-public class Greeting {
+public class GreetingDto {
     private String name;
     private String message;
 }

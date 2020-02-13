@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(GreetingController.class)
 @ActiveProfiles("test")
-class GreetingControllerTest {
+class GreetingDtoControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
