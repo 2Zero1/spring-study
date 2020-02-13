@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -44,6 +45,7 @@ class GreetingControllerTest {
         mockMvc.perform(get("/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello")));
+        verify(greetingService).getMessage(null);
     }
 
     @Test
@@ -51,13 +53,7 @@ class GreetingControllerTest {
         mockMvc.perform(get("/hello").param("name","YH"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello, YH")));
-
-    }   @Test
-    public void helloWithName2() throws Exception {
-        mockMvc.perform(get("/hello").param("name","H"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Hello, H")));
-
+        verify(greetingService).getMessage("YH");
     }
 
 }
