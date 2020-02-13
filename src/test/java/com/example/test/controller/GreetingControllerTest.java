@@ -51,6 +51,13 @@ class GreetingControllerTest {
         mockMvc.perform(get("/hello").param("name","YH"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Hello, YH")));
+
+    }   @Test
+    public void helloWithName2() throws Exception {
+        mockMvc.perform(get("/hello").param("name","H"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("Hello, H")));
+
     }
 
 }
